@@ -1,0 +1,259 @@
+/* ---- Design tokens -------------------------------------------------- */
+:root {
+  --ink: #1e2328;        /* graphite - primary dark surface */
+  --ink-soft: #2b323a;
+  --brass: #b8925a;      /* accent - the colour of the keys themselves */
+  --brass-dim: #8f7148;
+  --parchment: #f6f3ec;  /* light surface, evokes a key tag */
+  --slate: #4a535c;      /* secondary text / borders */
+  --slate-soft: #8891974d;
+  --ok: #4f7a5d;
+  --alert: #a65b4b;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; margin: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select { font-family: inherit; }
+
+/* ---- Wall-station display -------------------------------------------- */
+.station {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  padding: 32px;
+}
+
+.station-plate {
+  width: min(480px, 100%);
+  background: var(--ink-soft);
+  border: 1px solid var(--brass-dim);
+  border-radius: 4px;
+  padding: 48px 40px;
+  text-align: center;
+  color: var(--parchment);
+}
+
+.station-eyebrow {
+  margin: 0 0 8px;
+  color: var(--brass);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.station-day {
+  margin: 0 0 4px;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.station-clock {
+  margin: 0 0 32px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--slate-soft);
+}
+
+.station-qr-frame {
+  display: inline-flex;
+  padding: 20px;
+  background: var(--parchment);
+  border-radius: 4px;
+  border: 6px solid var(--brass);
+}
+
+.station-qr-loading {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+.station-instructions {
+  margin: 28px 0 6px;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.station-expiry {
+  margin: 0;
+  color: var(--slate-soft);
+  font-size: 0.85rem;
+}
+
+.station-error {
+  margin-top: 16px;
+  color: var(--alert);
+  font-size: 0.9rem;
+}
+
+/* ---- Scan form (mobile) ----------------------------------------------- */
+.scan-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.scan-card {
+  width: min(420px, 100%);
+}
+
+.scan-eyebrow {
+  margin: 0 0 4px;
+  color: var(--brass-dim);
+  font-weight: 600;
+}
+
+.scan-title {
+  margin: 0 0 28px;
+  font-size: 1.4rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.scan-subtitle {
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+.scan-status {
+  color: var(--slate);
+}
+
+.scan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scan-label {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.scan-input {
+  padding: 12px 14px;
+  border: 1px solid var(--slate-soft);
+  border-radius: 3px;
+  font-size: 1rem;
+  background: white;
+  color: var(--ink);
+}
+
+.scan-input:focus, .scan-toggle-btn:focus-visible, .scan-submit:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.scan-toggle {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.scan-toggle-btn {
+  flex: 1;
+  padding: 14px 0;
+  border: 1px solid var(--slate-soft);
+  border-radius: 3px;
+  background: white;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.scan-toggle-btn.is-active.is-in {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: white;
+}
+
+.scan-toggle-btn.is-active.is-out {
+  background: var(--alert);
+  border-color: var(--alert);
+  color: white;
+}
+
+.scan-submit {
+  margin-top: 26px;
+  padding: 14px 0;
+  background: var(--ink);
+  color: var(--parchment);
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scan-submit:disabled {
+  background: var(--slate-soft);
+  cursor: not-allowed;
+}
+
+.scan-result {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+}
+
+.scan-result.is-ok { background: #4f7a5d1a; color: var(--ok); }
+.scan-result.is-error { background: #a65b4b1a; color: var(--alert); }
+
+/* ---- Admin log table ---------------------------------------------------- */
+.admin-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.admin-date { width: auto; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 2px solid var(--ink);
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--slate-soft);
+}
+
+.admin-table td.is-in { color: var(--ok); font-weight: 500; }
+.admin-table td.is-out { color: var(--alert); font-weight: 500; }
